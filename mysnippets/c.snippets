@@ -1,0 +1,25 @@
+global !p
+from c_file_head import (
+	chead1
+		)
+endglobal
+
+snippet head "add head to file" b
+`!p
+snip.rv=chead1(snip)
+`
+$0
+endsnippet
+
+snippet dfnc1 "function and comment" b
+/*
+ * Description:$5
+ * 
+ * @param  	$4	$3
+ * @return 	$1
+ */
+${1:void} ${2:function}($3 $4){
+	$0
+	
+}
+endsnippet

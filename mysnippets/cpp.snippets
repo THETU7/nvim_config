@@ -1,0 +1,26 @@
+global !p
+from c_file_head import (
+	chead1
+		)
+endglobal
+
+global !p
+def test(snip):
+	if snip.c != None:
+		if re.search(".*\.h",snip.fn) != None:
+			return "#endif"
+		else:
+			return ""
+endglobal
+
+
+snippet head "add head to file" b
+`!p
+snip.rv=chead1(snip)
+`
+${0}
+`!p
+snip.rv=test(snip)
+`
+endsnippet
+
