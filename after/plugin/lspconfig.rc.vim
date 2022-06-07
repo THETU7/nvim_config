@@ -20,5 +20,6 @@ EOF
 lua << EOF
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.clangd.setup{}
+require'lspconfig'.cmake.setup{}
 EOF
 

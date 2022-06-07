@@ -10,9 +10,7 @@ require("lspconf.typescript")
 --require("lspconf.json")
 --lua
 require("lspconf.lua")
-
---c/c++ 支持
---require("lspconf.clangd")
+require("lspconf.clangd")
 --普通的语言支持
 --require("lspconf.common")
 
@@ -74,49 +72,18 @@ local cmpFormat3 = function(entry, vim_item)
   return vim_item
 end
 
-------修复2021年10月12日 nvim-cmp.luaattempt to index field 'menu' (a nil value)---------
---重写插件方法,为了实现function 后,自动追加()
-local keymap = require("cmp.utils.keymap")
-cmp.confirm = function(option)
-  option = option or {}
-  local e = cmp.core.view:get_selected_entry() or (option.select and cmp.core.view:get_first_entry() or nil)
-  if e then
-    cmp.core:confirm(
-      e,
-      {
-        behavior = option.behavior
-      },
-      function()
-        local myContext = cmp.core:get_context({reason = cmp.ContextReason.TriggerOnly})
-        cmp.core:complete(myContext)
-        --function() 自动增加()
-        if
-          e and e.resolved_completion_item and
-            (e.resolved_completion_item.kind == 3 or e.resolved_completion_item.kind == 2)
-         then
-          vim.api.nvim_feedkeys(keymap.t("()<Left>"), "n", true)
-        end
-      end
-    )
-    return true
-  else
-    if vim.fn.complete_info({"selected"}).selected ~= -1 then
-      keymap.feedkeys(keymap.t("<C-y>"), "n")
-      return true
-    end
-    return false
-  end
-end
----------------
-
 cmp.setup {
   formatting = {
-    format = cmpFormat1
+    format = cmpFormat3
   },
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end
+  },
+  ---- test
+  completion ={
+	  keyword_length = 3
   },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -159,11 +126,11 @@ cmp.setup {
         end
       }
     },
-    --{name = "look"},
+    {name = "look"},
     {name = "path"},
     --{name = "cmp_tabnine"},
     --{name = "calc"},
-    --    {name = "spell"},
-    {name = "emoji"}
+    --{name = "spell"},
+    --{name = "emoji"}
   }
 }

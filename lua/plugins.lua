@@ -82,7 +82,10 @@ return require("packer").startup(
       }
 
       --coc.nvim
-      use {"neoclide/coc.nvim", branch = "release"}
+      --use {"neoclide/coc.nvim", branch = "release"}
+      --[[use {"neoclide/coc.nvim", branch = "master", run = "yarn install --frozen-lockfile"}]]
+      -- 错误检测
+      -- use "dense-analysis/ale"
 
       --latex预览
       use "lervag/vimtex"
@@ -120,6 +123,29 @@ return require("packer").startup(
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate"
       }
+
+      -- debug
+      use "puremourning/vimspector"
+
+      use "chr4/nginx.vim"
+
+      use {"kaicataldo/material.vim", branch = "main"}
+
+      use "rakr/vim-one"
+
+      -- 异步执行shell
+      use "skywind3000/asyncrun.vim"
+
+      use "nanotee/sqls.nvim"
+
+      --use "xolox/vim-misc"
+      --use "https://git.oschina.net/iamdsy/vim-lua-ftplugin"
+
+      use "google/vim-maktaba"
+      use "bazelbuild/vim-bazel"
+	  --use "cappyzawa/starlark.vim"
+	  use "bazelbuild/vim-ft-bzl"
+
     end,
     config = {
       max_jobs = 16,

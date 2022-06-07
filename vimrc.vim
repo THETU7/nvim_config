@@ -2,6 +2,8 @@
 set encoding=UTF-8
 " leader设置成空格
 let mapleader=" "
+" 设置命令行大小
+set cmdheight=1
 " 使用鼠标
 set mouse=c
 " 显示行号
