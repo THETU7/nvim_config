@@ -102,7 +102,9 @@ return require("packer").startup(
       -- 自动为尚不支持 Neovim 0.5 内置 lsp 客户端的配色方案创建缺少的 LSP 诊断突出显示组。
       use "folke/lsp-colors.nvim"
       -- 基于neovim 内置lsp 的轻量级lsp 插件，具有高性能UI。非常酷
-      use "rinx/lspsaga.nvim"
+      -- use {'glepnir/lspsaga.nvim', branch= 'main' }
+      -- use "rinx/lspsaga.nvim"
+      use {"tami5/lspsaga.nvim"}
 
       use "quangnguyen30192/cmp-nvim-ultisnips"
 
@@ -143,9 +145,8 @@ return require("packer").startup(
 
       use "google/vim-maktaba"
       use "bazelbuild/vim-bazel"
-	  --use "cappyzawa/starlark.vim"
-	  use "bazelbuild/vim-ft-bzl"
-
+      --use "cappyzawa/starlark.vim"
+      use "bazelbuild/vim-ft-bzl"
     end,
     config = {
       max_jobs = 16,

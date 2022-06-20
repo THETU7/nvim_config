@@ -38,7 +38,7 @@ nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()
 vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
 
 " 重命名 感觉没有lsp自带的功能好用，因为名称要从头输入
-nnoremap <silent><leader>rn <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent><leader>a <cmd>lua require('lspsaga.rename').rename()<CR>
 "预览定义
 nnoremap <silent> <leader>gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
 "Jump Diagnostic and Show Diagnostics
@@ -48,4 +48,3 @@ nnoremap <silent> <leader>cd <cmd>lua require'lspsaga.diagnostic'.show_line_diag
 nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
 " 关闭终端
 tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
-
