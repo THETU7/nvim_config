@@ -1,6 +1,0 @@
---2022-06-07 21:33:21--  https://deepin-wine.i-m.dev/setup.sh
-正在解析主机 deepin-wine.i-m.dev (deepin-wine.i-m.dev)... 104.198.14.52
-正在连接 deepin-wine.i-m.dev (deepin-wine.i-m.dev)|104.198.14.52|:443... 已连接。
-错误: 无法验证 deepin-wine.i-m.dev 的由 ‘CN=R3,O=Let's Encrypt,C=US’ 颁发的证书:
-  无法本地校验颁发者的权限。
-要以不安全的方式连接至 deepin-wine.i-m.dev，使用“--no-check-certificate”。

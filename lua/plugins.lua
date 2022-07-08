@@ -60,14 +60,27 @@ return require("packer").startup(
         }
       }
 
-      -- 代码段提示
-      use {
-        "L3MON4D3/LuaSnip",
-        requires = {
-          "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-          "rafamadriz/friendly-snippets" --代码段合集
-        }
-      }
+	  --[[
+         [-- 代码段提示
+         [use {
+         [  "L3MON4D3/LuaSnip",
+         [  requires = {
+         [    "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+         [    "rafamadriz/friendly-snippets" --代码段合集
+         [  }
+         [}
+		 ]]
+
+		 use {
+			 "SirVer/ultisnips", -- 代码段
+			 requires = {
+				 "quangnguyen30192/cmp-nvim-ultisnips", -- for nvim-cmp
+				 "honza/vim-snippets", -- 代码段集合
+				 config = function()
+				 	require("cmp_nvim_ultisnips").setup{}
+				 end
+			 }
+		 }
 
       --代码格式化工具，主要用于lua语法格式化
       use "mhartington/formatter.nvim"

@@ -1,26 +1,17 @@
-global !p
-from c_file_head import (
-	chead1
-		)
-endglobal
+snippet cla "An entire .h generator" b
+#ifndef ${2:`!v substitute(vim_snippets#Filename('$1_H','ClassName'),'.*','\U&\E','')`}
+#define $2
 
-global !p
-def test(snip):
-	if snip.c != None:
-		if re.search(".*\.h",snip.fn) != None:
-			return "#endif"
-		else:
-			return ""
-endglobal
+class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}
+{
+public:
+	$1();
+	virtual ~$1();
 
+private:
+	$3
+};
 
-snippet head "add head to file" b
-`!p
-snip.rv=chead1(snip)
-`
-${0}
-`!p
-snip.rv=test(snip)
-`
+#endif /* $2 */
 endsnippet
 

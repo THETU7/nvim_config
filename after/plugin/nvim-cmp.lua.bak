@@ -17,8 +17,8 @@ require("lspconf.typescript")
 vim.o.completeopt = "menuone,noselect"
 
 -- luasnip setup
+local luasnip = require "luasnip"
 local lspkind = require("lspkind")
-local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 -- nvim-cmp setup
 local cmp = require "cmp"
@@ -128,28 +128,20 @@ cmp.setup {
     },
     ["<Tab>"] = function(fallback)
       if cmp.visible() then
-        --[[
-		 [elseif luasnip.expand_or_jumpable() then
-		 [  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-		 [else
-		 [  fallback()
-		 ]]
         cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
       else
-        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+        fallback()
       end
     end,
     ["<S-Tab>"] = function(fallback)
       if cmp.visible() then
-        --[[
-		 [elseif luasnip.jumpable(-1) then
-		 [  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-		 [else
-		 [  fallback()
-		 ]]
         cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
       else
-        require("cmp_nvim_ultisnips").setup {}
+        fallback()
       end
     end
   },

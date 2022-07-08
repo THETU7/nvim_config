@@ -21,13 +21,13 @@ autocmd BufNewFile *.sh,*.html,*.tex exec ":call SetTitle()"
 func SetTitle()
     if expand ("%:e") == 'sh'
         call setline(1, "#!/bin/bash")
-        call setline(2, "#Author:bert")
-        call setline(3, "#Blog:http://blog.51cto.com/zpf666")
+        call setline(2, "#Author:Zongyang")
+        call setline(3, "#Blog:https://www.thetu.cn")
         call setline(4, "#Time:".strftime("%F %T"))
         call setline(5, "#Name:".expand("%"))
         call setline(6, "#Version:V1.0")
         call setline(7, "#Description:This is a production script.")
-   " elseif expand ("%:e") == 'cc'||expand ("%:e")=='cpp'||expand ("%:e")=='h'||expand ("%:e")=='c'
+	"elseif expand ("%:e") == 'cc'||expand ("%:e")=='cpp'||expand ("%:e")=='h'||expand ("%:e")=='c'
 		"call setline(1, "/*")
 		"call setline(2, "  The BSD License(BSD)")
 		"call setline(3, "") 

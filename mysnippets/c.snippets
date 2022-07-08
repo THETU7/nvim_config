@@ -1,13 +1,14 @@
-global !p
-from c_file_head import (
-	chead1
-		)
-endglobal
+priority 1
 
 snippet head "add head to file" b
-`!p
-snip.rv=chead1(snip)
-`
+/*
+	Use of this source code is governed by a BSD-style license
+
+	Author: 	 ZongYang
+	Date: 		 `!v strftime("%F")`
+	Description: $1
+	Version: 	 ${2:0.0.1}
+*/
 $0
 endsnippet
 

@@ -241,7 +241,13 @@ local date_input = function(args, state, fmt)
   return sn(nil, i(1, os.date(fmt)))
 end
 
-ls.snippets = {
+--[[
+   [ls.add_snippets = ("all",{
+   [
+   [})
+   ]]
+
+ls.add_snippets = {
   -- When trying to expand a snippet, luasnip first searches the tables for
   -- each filetype specified in 'filetype' followed by 'all'.
   -- If ie. the filetype is 'lua.c'
