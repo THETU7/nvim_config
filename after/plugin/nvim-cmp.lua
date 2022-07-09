@@ -129,20 +129,27 @@ cmp.setup {
     ["<Tab>"] = function(fallback)
       if cmp.visible() then
         --[[
+         [else
+         [  cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+		 ]]
+        --[[
 		 [elseif luasnip.expand_or_jumpable() then
 		 [  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
 		 [else
 		 [  fallback()
 		 ]]
         cmp.select_next_item()
-      --[[
-         [else
-         [  cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-		 ]]
+      else
+        fallback()
       end
     end,
     ["<S-Tab>"] = function(fallback)
       if cmp.visible() then
+        --[[
+         [else
+         [  -- require("cmp_nvim_ultisnips").setup {}
+         [  cmp_ultisnips_mappings.jump_backwards(fallback)
+		 ]]
         --[[
 		 [elseif luasnip.jumpable(-1) then
 		 [  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
@@ -150,11 +157,8 @@ cmp.setup {
 		 [  fallback()
 		 ]]
         cmp.select_prev_item()
-      --[[
-         [else
-         [  -- require("cmp_nvim_ultisnips").setup {}
-         [  cmp_ultisnips_mappings.jump_backwards(fallback)
-		 ]]
+      else
+        fallback()
       end
     end
   },
@@ -174,7 +178,7 @@ cmp.setup {
     {name = "path"},
     --{name = "cmp_tabnine"},
     --{name = "calc"},
-    {name = "spell"},
+    {name = "spell"}
     --{name = "emoji"}
   }
 }
