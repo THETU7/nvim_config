@@ -60,7 +60,7 @@ return require("packer").startup(
         }
       }
 
-	  --[[
+      --[[
          [-- 代码段提示
          [use {
          [  "L3MON4D3/LuaSnip",
@@ -70,17 +70,16 @@ return require("packer").startup(
          [  }
          [}
 		 ]]
-
-		 use {
-			 "SirVer/ultisnips", -- 代码段
-			 requires = {
-				 "quangnguyen30192/cmp-nvim-ultisnips", -- for nvim-cmp
-				 "honza/vim-snippets", -- 代码段集合
-				 config = function()
-				 	require("cmp_nvim_ultisnips").setup{}
-				 end
-			 }
-		 }
+      use {
+        "SirVer/ultisnips", -- 代码段
+        requires = {
+          "quangnguyen30192/cmp-nvim-ultisnips", -- for nvim-cmp
+          "honza/vim-snippets", -- 代码段集合
+          config = function()
+            require("cmp_nvim_ultisnips").setup {}
+          end
+        }
+      }
 
       --代码格式化工具，主要用于lua语法格式化
       use "mhartington/formatter.nvim"
@@ -132,12 +131,17 @@ return require("packer").startup(
       -- 加速文件搜索速度,如果安装失败需要到插件目录执行make命令手动编译
       -- 用了这个插件以后，貌似更快了(感觉输入更跟手了，可能是心理作用)。但是对于我的小项目感受不是很明显
       use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+      use {"fhill2/telescope-ultisnips.nvim"}
+      use {"xiyaowong/telescope-emoji.nvim"}
 
       --高性能代码高亮插件
       use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate"
       }
+
+      --spell check
+      use {"lewis6991/spellsitter.nvim"}
 
       -- debug
       use "puremourning/vimspector"
@@ -150,6 +154,7 @@ return require("packer").startup(
 
       -- 异步执行shell
       use "skywind3000/asyncrun.vim"
+      use {"skywind3000/asynctasks.vim"}
 
       use "nanotee/sqls.nvim"
 
@@ -164,7 +169,7 @@ return require("packer").startup(
     config = {
       max_jobs = 16,
       git = {
-        default_url_format = "https://hub.fastgit.org/%s"
+        default_url_format = "https://gitclone.com/github.com/%s"
       },
       display = {
         open_fn = function()

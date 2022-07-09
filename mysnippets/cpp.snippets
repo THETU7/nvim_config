@@ -2,6 +2,8 @@ snippet cla "An entire .h generator" b
 #ifndef ${2:`!v substitute(vim_snippets#Filename('$1_H','ClassName'),'.*','\U&\E','')`}
 #define $2
 
+namespace ${3:`!p snip.rv=t[1].lower()`}{
+
 class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}
 {
 public:
@@ -9,9 +11,10 @@ public:
 	virtual ~$1();
 
 private:
-	$3
+	$0
 };
+
+}
 
 #endif /* $2 */
 endsnippet
-

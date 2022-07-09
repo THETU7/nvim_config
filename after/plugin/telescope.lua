@@ -30,6 +30,8 @@ require("telescope").setup {
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("ultisnips")
+require("telescope").load_extension("emoji")
 
 --按键设置
 vim.api.nvim_set_keymap("n", "<leader>ff", [[<cmd>lua require('telescope.builtin').find_files()<cr>]], {})
@@ -38,3 +40,5 @@ vim.api.nvim_set_keymap("n", "<leader>fb", [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap("n", "<leader>fh", [[<cmd>lua require('telescope.builtin').help_tags()<cr>]], {})
 vim.api.nvim_set_keymap("n", "<leader>sf", [[<cmd>lua require('telescope.builtin').file_browser()<cr>]], {})
 vim.api.nvim_set_keymap("n", "<leader>/", [[<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>]], {})
+vim.api.nvim_set_keymap("n", "<leader>sp", [[<cmd>Telescope ultisnips<cr>]], {})
+vim.api.nvim_set_keymap("n", "<leader>si", [[<cmd>Telescope emoji<cr>]], {})

@@ -18,7 +18,7 @@ vim.o.completeopt = "menuone,noselect"
 
 -- luasnip setup
 local lspkind = require("lspkind")
-local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+--local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 -- nvim-cmp setup
 local cmp = require "cmp"
@@ -135,8 +135,10 @@ cmp.setup {
 		 [  fallback()
 		 ]]
         cmp.select_next_item()
-      else
-        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+      --[[
+         [else
+         [  cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+		 ]]
       end
     end,
     ["<S-Tab>"] = function(fallback)
@@ -148,8 +150,11 @@ cmp.setup {
 		 [  fallback()
 		 ]]
         cmp.select_prev_item()
-      else
-        require("cmp_nvim_ultisnips").setup {}
+      --[[
+         [else
+         [  -- require("cmp_nvim_ultisnips").setup {}
+         [  cmp_ultisnips_mappings.jump_backwards(fallback)
+		 ]]
       end
     end
   },
@@ -166,10 +171,10 @@ cmp.setup {
       }
     },
     --{name = "look"},
-    {name = "path"}
+    {name = "path"},
     --{name = "cmp_tabnine"},
     --{name = "calc"},
-    --{name = "spell"},
+    {name = "spell"},
     --{name = "emoji"}
   }
 }
