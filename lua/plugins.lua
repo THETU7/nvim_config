@@ -161,15 +161,15 @@ return require("packer").startup(
       --use "xolox/vim-misc"
       --use "https://git.oschina.net/iamdsy/vim-lua-ftplugin"
 
-      use "google/vim-maktaba"
-      use "bazelbuild/vim-bazel"
-      --use "cappyzawa/starlark.vim"
-      use "bazelbuild/vim-ft-bzl"
+      -- for jsonls
+      use "b0o/schemastore.nvim"
+
+	  use("nathom/filetype.nvim")
     end,
     config = {
       max_jobs = 16,
       git = {
-        default_url_format = "https://gitclone.com/github.com/%s"
+        default_url_format = "https://github.com/%s"
       },
       display = {
         open_fn = function()

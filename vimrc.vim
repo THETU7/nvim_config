@@ -65,4 +65,5 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx,*.js set filetype=typescriptreact
 " 不对中文报错
 setlocal spell spelllang=en_us,cjk
 " 打开语法检测
-set spell
+" set spell
+set nospell

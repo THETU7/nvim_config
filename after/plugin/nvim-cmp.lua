@@ -58,7 +58,7 @@ local cmpFormat3 = function(entry, vim_item)
   vim_item.menu =
     ({
     buffer = "[Buffer]",
-    nvim_lsp = "",
+    nvim_lsp = "[LSP]",
     ultisnips = "[UltiSnips]",
     nvim_lua = "[Lua]",
     cmp_tabnine = "[TabNine]",
@@ -108,7 +108,7 @@ end
 
 cmp.setup {
   formatting = {
-    format = cmpFormat2
+    format = cmpFormat3
   },
   snippet = {
     expand = function(args)
@@ -168,6 +168,7 @@ cmp.setup {
     {name = "ultisnips"},
     {
       name = "buffer",
+      keyword_length = 5,
       option = {
         get_bufnrs = function()
           return vim.api.nvim_list_bufs()
@@ -178,7 +179,11 @@ cmp.setup {
     {name = "path"},
     --{name = "cmp_tabnine"},
     --{name = "calc"},
-    {name = "spell"}
+    {name = "spell"},
     --{name = "emoji"}
+  },
+  experimental = {
+    native_menu = false,
+    ghost_text = true
   }
 }

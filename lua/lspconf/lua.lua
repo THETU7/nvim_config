@@ -1,12 +1,8 @@
-local sumneko_root_path = "/home/thetu/.local/share/nvim/lsp/lua-language-server"
---local sumneko_root_path = vim.fn.stdpath('cache')..'/lsp/lua-language-server'
-local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require "lspconfig".sumneko_lua.setup {
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua", "--locale=zh-cn"},
+return {
   settings = {
     Lua = {
       runtime = {
@@ -20,7 +16,6 @@ require "lspconfig".sumneko_lua.setup {
         globals = {"vim"}
       },
       workspace = {
-        -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
         checkThirdParty = false
       },

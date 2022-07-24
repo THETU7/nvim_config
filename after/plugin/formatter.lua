@@ -15,6 +15,16 @@ formatter.setup(
           }
         end
       },
+      xmake = {
+        -- luafmt
+        function()
+          return {
+            exe = "luafmt",
+            args = {"--indent-count", 2, "--stdin"},
+            stdin = true
+          }
+        end
+      },
       sql = {
         -- sqlformat
         -- 安装方法:pip3 install --upgrade sqlparse
@@ -55,7 +65,7 @@ formatter.setup(
           return {
             exe = "clang-format",
             args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
-            stdin = true,
+            stdin = true
           }
         end
       },
@@ -64,7 +74,7 @@ formatter.setup(
           return {
             exe = "gofmt",
             args = {"-w"},
-            stdin = false,
+            stdin = false
           }
         end
       }

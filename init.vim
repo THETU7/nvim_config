@@ -5,6 +5,7 @@ runtime ./vimrc.vim
 " 插件管理
 "./lua/plugins.lua
 lua require('plugins')
+lua require('lspconf.setup')
 " 按键映射
 runtime ./maps.vim
 
